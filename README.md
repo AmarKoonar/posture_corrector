@@ -1,6 +1,6 @@
 # 🧍‍♂️ Posture Correction Application
 
-This is a lightweight desktop application that uses [MediaPipe](https://mediapipe.dev/) and a built-in GUI to monitor and help correct your posture using your webcam. Just run the provided executable — no setup required!
+This is a lightweight desktop application that uses [MediaPipe](https://mediapipe.dev/) and a built-in GUI to monitor and help correct your posture using your webcam. The app is built with Python, Flask, and PyWebview and must be compiled locally using PyInstaller.
 
 ## 📦 Features
 
@@ -8,25 +8,29 @@ This is a lightweight desktop application that uses [MediaPipe](https://mediapip
 - Alerts for poor posture  
 - Simple web-based UI embedded in a desktop window  
 - Built with Python, Flask, MediaPipe, and PyWebview  
-- Bundled as a **single executable**
+- Can be compiled into a **single executable**
 
-## 🚀 How to Use
+## 🚀 How to Run
 
-1. **Navigate to the `dist` folder**
-2. **Run the file named `run`** (or `run.exe` on Windows)
+Since the `dist/` folder is not included, you need to compile the application yourself:
 
-The application will launch a desktop window and begin posture monitoring automatically.
+### 1. Install dependencies
 
-## 🏗️ Build Instructions
+```bash
+pip install -r requirements.txt
+```
 
-If you want to build this yourself:
+### 2. Build the executable
 
 ```bash
 pyinstaller --onefile --add-data "app:app" run.py
 ```
 
-- This bundles everything into one file under `dist/`
-- Replace `run.py` with your launcher filename if different
+> 🔧 Make sure you have `pyinstaller` installed (`pip install pyinstaller`).
+
+### 3. Run the app
+
+Navigate to the `dist/` folder created by PyInstaller and run the generated `run` file.
 
 ## 🛠️ Built With
 
@@ -41,9 +45,8 @@ pyinstaller --onefile --add-data "app:app" run.py
 ```
 📁 app/
  └── app.py, templates/, static/  <- Flask + posture logic
-📁 dist/
- └── run       <- One-file executable output
 run.py         <- Main launcher script
+requirements.txt
 README.md
 ```
 
