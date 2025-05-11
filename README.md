@@ -1,41 +1,55 @@
 # 🧍‍♂️ Posture Correction Application
 
-This is a lightweight desktop application that uses [MediaPipe](https://mediapipe.dev/) to monitor and help correct your posture using your webcam. No setup required — just run the executable and you're good to go!
+This is a lightweight desktop application that uses [MediaPipe](https://mediapipe.dev/) and a built-in GUI to monitor and help correct your posture using your webcam. Just run the provided executable — no setup required!
 
 ## 📦 Features
 
-- Real-time posture detection using your webcam  
+- Real-time posture detection using webcam  
 - Alerts for poor posture  
-- Built with Python and MediaPipe  
-- No installation needed — single executable
+- Simple web-based UI embedded in a desktop window  
+- Built with Python, Flask, MediaPipe, and PyWebview  
+- Bundled as a **single executable**
 
 ## 🚀 How to Use
 
-1. **Navigate to the `dist` folder** in this project directory.
-2. **Run the file named `run`** (or `run.exe` on Windows).
+1. **Navigate to the `dist` folder**
+2. **Run the file named `run`** (or `run.exe` on Windows)
 
-That's it! The posture correction system will launch and start monitoring your posture immediately.
+The application will launch a desktop window and begin posture monitoring automatically.
+
+## 🏗️ Build Instructions
+
+If you want to build this yourself:
+
+```bash
+pyinstaller --onefile --add-data "app:app" run.py
+```
+
+- This bundles everything into one file under `dist/`
+- Replace `run.py` with your launcher filename if different
 
 ## 🛠️ Built With
 
 - [Python](https://www.python.org/)
+- [Flask](https://flask.palletsprojects.com/)
 - [MediaPipe](https://mediapipe.dev/)
-- [OpenCV](https://opencv.org/) (for webcam access and display)
-- [PyInstaller](https://www.pyinstaller.org/) (to package the app)
+- [PyWebview](https://pywebview.flowrl.com/)
+- [PyInstaller](https://www.pyinstaller.org/)
 
 ## 📂 File Structure
 
 ```
+📁 app/
+ └── app.py, templates/, static/  <- Flask + posture logic
 📁 dist/
- └── run       <- The compiled posture correction executable
-📁 src/
- └── *.py      <- Source Python scripts
+ └── run       <- One-file executable output
+run.py         <- Main launcher script
 README.md
 ```
 
 ## 🧠 How It Works
 
-The app uses MediaPipe's Pose solution to identify key landmarks on your body and checks for posture alignment based on the relative position of your shoulders, neck, and hips. If poor posture is detected (e.g., slouching or leaning), a visual cue or alert is triggered.
+MediaPipe tracks posture via key body points using your webcam. Flask serves the posture visualization and logic, and PyWebview wraps it into a native desktop app.
 
 ## 📝 License
 
