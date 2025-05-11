@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pose Detection</title>
+  <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    h1 {
+        
+      color: #333;
+    }
+
+    .video-feed {
+      border: 5px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #0066cc;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0052a3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pose Tracker</h1>
+  <img class="video-feed" src="{{ url_for('video') }}" width="720" />
+
+  <form action="/set-posture" method="POST">
+    <button type="submit">Set Posture</button>
+  </form>
+</body>
+</html>
